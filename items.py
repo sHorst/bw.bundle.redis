@@ -24,6 +24,8 @@ for key,server in node.metadata.get('redis', {}).get('servers', {}).items():
         '',
         f'dbfilename dump-{key}.rdb',
         f'dir /var/lib/redis/{key}/',
+        # disable Protected Mode
+        'protected-mode no',
     ]
 
     if server.get('replicaof', False):
